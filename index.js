@@ -6,6 +6,7 @@ const cookie_parser = require('cookie-parser');
 
 const path = require('path');
 const db = require('./models');
+const userRouter = require('./routes/user');
 require('dotenv').config();
 
 // 서버 실행
@@ -29,6 +30,8 @@ app.use(express_session({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
+
+app.use('/user',userRouter);
 
 // passport 부분
 
