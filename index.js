@@ -3,6 +3,7 @@ const express = require('express');
 const express_session = require('express-session');
 const morgan = require('morgan');
 const cookie_parser = require('cookie-parser');
+const passport = require('passport');
 
 const path = require('path');
 const db = require('./models');
