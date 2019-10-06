@@ -7,6 +7,8 @@ const passport = require('passport');
 
 const path = require('path');
 const db = require('./models');
+const passportConfig = require('./passport');
+
 const userRouter = require('./routes/user');
 require('dotenv').config();
 
@@ -16,6 +18,7 @@ const app = express();
 // 미들웨어 세팅
 
 db.sequelize.sync()
+passportConfig();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
@@ -32,9 +35,13 @@ app.use(express_session({
 app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
 
+// passport 부분
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/user',userRouter);
 
-// passport 부분
+
 
 // 에러 처리
 
