@@ -4,15 +4,30 @@ const express_session = require('express-session');
 const morgan = require('morgan');
 const cookie_parser = require('cookie-parser');
 
+const path = require('path');
+
+require('dotenv').config();
+
 // 서버 실행
 const app = express();
 
 // 미들웨어 세팅
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
-app.use(cookie_parser());
-app.use(express_session());
+app.use(cookie_parser(process.env.COOKIE_SECRET));
+app.use(express_session({
+  resave:false,
+  saveUninitialized:false,
+  secret: process.env.COOKIE_SECRET,
+  cookie:{
+    httpOnly:true,
+    secure:false
+  }
+}));
 app.use(express.json());
+app.use(express.urlencoded({ extended:true}));
 
+// passport 부분
 
 // 에러 처리
 
