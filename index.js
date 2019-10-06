@@ -5,13 +5,16 @@ const morgan = require('morgan');
 const cookie_parser = require('cookie-parser');
 
 const path = require('path');
-
+const db = require('./models');
 require('dotenv').config();
 
 // 서버 실행
 const app = express();
 
 // 미들웨어 세팅
+
+db.sequelize.sync()
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(cookie_parser(process.env.COOKIE_SECRET));
