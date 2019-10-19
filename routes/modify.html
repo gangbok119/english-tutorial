@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify Page</title>
+</head>
+<body>
+<h1>Modify Page</h1>
+<hr />
+<form method="post">
+    <fieldset>
+        <legend>Modify Data</legend>
+        <table>
+            <tr>
+                <td><label>영단어</label></td>
+                <td><input type="text" name="eng" value="<%= data.eng %>" /></td>
+            </tr>
+            <tr>
+                <td><label>단어뜻</label></td>
+                <td><input type="text" name="kor" value="<%= data.kor %>"/></td>
+            </tr>
+        </table>
+        <input type="submit">
+		<input type="button" value="리스트" name="golist" id="golist">
+    </fieldset>
+</form>
+<script>
+	document.getElementById("golist").addEventListener("click",function(){
+		location.href="/";
+	});
+</script>
+</body>
+</html>
