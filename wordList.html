@@ -18,6 +18,11 @@
 <h1>Word Lists</h1>
 <div class="flex_container">
 <div class="flex_item">
+        <div>
+                <form action="/create" method="get">
+                    <button type="submit">CREATE</button>
+                </form>
+            </div>
 <table width="100%" border="1">
     <tr>
         <th>영단어</th>
@@ -25,12 +30,12 @@
         <th>MODIFY</th>
         <th>DELETE</th>
     </tr>
-    <% data.forEach(function (word, index) { %>
+    <% data.forEach(function (word, id) { %>
     <tr>
         <td><%= word.eng %></td>
         <td><%= word.kor %></td>
-        <td><a href="/modify/<%= word.idx %>">MODIFY</a></button></td>
-        <td><a href="/delete/<%= word.idx %>">DELETE</a></input></td>
+        <td><a href="/update/<%= word.id %>">MODIFY</a></button></td>
+        <td><a href="/delete/<%= word.id %>">DELETE</a></input></td>
     </tr>
     <% }); %>
 </table>

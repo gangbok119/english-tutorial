@@ -17,6 +17,11 @@
 <body>
 <h1>Word Lists</h1>
 <div class="flex_container">
+        <div>
+                <form action="/create" method="get">
+                    <button type="submit">CREATE</button>
+                </form>
+            </div>
 <div class="flex_item">
 <table width="100%" border="1">
     <tr>
@@ -25,11 +30,11 @@
         <th>MODIFY</th>
         <th>DELETE</th>
     </tr>
-    <% data.forEach(function (word, index) { %>
+    <% data.forEach(function (word, id) { %>
     <tr>
         <td><%= word.eng %></td>
         <td><%= word.kor %></td>
-        <td><a href="/modify/<%= word.id %>">MODIFY</a></button></td>
+        <td><a href="/update/<%= word.id %>">MODIFY</a></button></td>
         <td><a href="/delete/<%= word.id %>">DELETE</a></input></td>
     </tr>
     <% }); %>
@@ -40,8 +45,8 @@
 </div>
 </div>
 <hr/>
-<form action="/create" method="get">
-    <button type="submit">CREATE</button>
-</form>
+
+
+
 </body>
 </html>
